@@ -6,6 +6,7 @@ var bodyParser = require('body-parser')
 app.use(cors())
 
 const connect  = ()=>{
+    mongoose.set("strictQuery", true);
     return mongoose.connect("mongodb+srv://boat123:boat123@cluster0.zcqewyi.mongodb.net/?retryWrites=true&w=majority")
 }
 // parse application/x-www-form-urlencoded

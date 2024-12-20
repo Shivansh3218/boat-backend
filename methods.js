@@ -5,7 +5,6 @@ module.exports.findAllBoats = (filterQuery) => {
 };
 
 module.exports.searchBoats = async (searchTerm) => {
-  // Convert search term to lowercase for case-insensitive search
   const searchRegex = new RegExp(searchTerm.toLowerCase(), "i");
   return boat
     .find({
@@ -15,11 +14,14 @@ module.exports.searchBoats = async (searchTerm) => {
     .exec();
 };
 
+module.exports.findBoatsByCategory = async (description) => {
+  return boat.find({ description: description }).lean().exec();
+};
+
 module.exports.findboat = (filterQuery) => {
   return boat.findOne(filterQuery).lean().exec();
 };
 
-// Note: Keeping these methods for data management but they won't be exposed via API
 module.exports.createboat = (body) => {
   return boat.create(body);
 };

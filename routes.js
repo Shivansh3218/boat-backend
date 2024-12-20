@@ -1,7 +1,10 @@
 const router = require("express").Router();
+const controller = require("./controller");
 
-const controller  = require('./controller')
+// Get all products
+router.get("/products", controller.getAllProducts);
 
-router.get('/Products',controller.getAllProducts)
-router.get('/createProduct',controller.createProduct)
+// Search products
+router.get("/products/search", controller.searchProducts);
+
 module.exports = router;
